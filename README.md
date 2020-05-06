@@ -5,8 +5,8 @@
 ## messagesテーブル
 |Column||Type||Options|
 |------||----||-------|
-|body|text|
-|image|string|
+|body|text|null: false|
+|image|string|null: false|
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
@@ -19,7 +19,6 @@
 |------|----|-------|
 |group_name|string|null: false|
 |user_id|string|null: false, foreign_key: true|
-|user_nickname|string||null: false|
 ### Association
 - has_many :users
 - has_many :messages
