@@ -5,35 +5,14 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
-|image|string|null: false|
+|body|text||
+|image|string||
 |group_id|integer||null: false, foreign_key: true|
 |user_id|string|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :group
 
-
-## textsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|body|text|null: false|
-|message_id|integer||null: false, foreign_key: true|
-|user_id|integer||null: false, foreign_key: true|
-### Association
-- belongs_to :message
-- belongs_to :user
-
-
-## imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|image|string|null: false|
-|message_id|integer||null: false, foreign_key: true|
-|user_id|integer||null: false, foreign_key: true|
-### Association
-- belongs_to :message
-- belongs_to :user
 
 
 ## groupsテーブル
