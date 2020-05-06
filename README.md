@@ -14,14 +14,38 @@
 - belongs_to :group
 
 
+## textsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|text|null: false|
+|message_id|integer||null: false, foreign_key: true|
+|user_id|integer||null: false, foreign_key: true|
+### Association
+- belongs_to :message
+- belongs_to :user
+
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|message_id|integer||null: false, foreign_key: true|
+|user_id|integer||null: false, foreign_key: true|
+### Association
+- belongs_to :message
+- belongs_to :user
+
+
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |group_name|string|null: false|
 |user_id|string|null: false, foreign_key: true|
 ### Association
-- has_many :users
+- has_many :users, through: :groups_users
 - has_many :messages
+- has_many :groups_users
+
 
 
 ## usersテーブル
@@ -33,7 +57,8 @@
 |group_id|string|null: false, foreign_key: true|
 ### Association
 - has_many :messages
-- has_many :groups
+- has_many :groups through: :groups_users
+- has_many :groups_users
 
 
 ## groups_usersテーブル
