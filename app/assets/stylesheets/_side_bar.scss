@@ -1,0 +1,67 @@
+.side-bar {
+  background-color: $side-color;
+  width: 300px;
+  &__header {
+    background-color: $side-color;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .top-items {
+      height: 20px;
+      width: 260px;
+      margin: 0 20px;
+      &__list {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+      }
+        &__name {
+          color: $white-color;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 20px;
+        }
+        &__icon {
+          width: 60px;
+          height: 20px;
+          text-align: right;
+          line-height: 20px;
+          a {
+            color: $white-color;
+            text-decoration: none;
+            .edit-icon {
+              padding-right: 5px;
+              text-align: right;
+            }
+            .cog-icon {
+              text-align: right;
+            }
+          }
+        }
+    }
+  }
+
+  .side-bar__bottom {
+    background-color: #2f3e51;
+    height: calc(100vh - 100px);
+    color: $white-color;
+    font-weight: bold;
+    .bottom-items {
+      height: 91px;
+      &__group {
+        font-size: 15px;
+        margin: 0 20px 5px;
+        padding-top: 20px;
+      }
+      &__message {
+        font-size: 11px;
+        margin: 0 20px 40px;
+      }
+    }
+  }
+}
+
+
+
+
