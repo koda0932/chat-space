@@ -5,26 +5,18 @@
         %li.top-items__name
           = current_user.name
         %li.top-items__icon
-          = link_to "#" do
+          = link_to new_group_path do
             = icon("far", "edit", class: "edit-icon")
           = link_to edit_user_path(current_user) do
             = icon("fas", "cog", class: "cog-icon")
   
   .side-bar__bottom
     .bottom-items
-      %p.bottom-items__group
-        techcamp1
-      %p.bottom-items__message
-        まだメッセージがありません
-      %p.bottom-items__group
-        techcamp2
-      %p.bottom-items__message
-        まだメッセージがありません
-      %p.bottom-items__group
-        techcamp3
-      %p.bottom-items__message
-        まだメッセージがありません
-
-
+      - current_user.groups.each do |group|
+        = link_to '#' do
+          .bottom-items__group
+            = group.name
+        .bottom-items__message
+          まだメッセージがありません
 
   
