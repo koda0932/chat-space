@@ -47,8 +47,13 @@
     height: calc(100vh - 100px);
     color: $white-color;
     font-weight: bold;
+    overflow:scroll;
     .bottom-items {
       height: 91px;
+      a {
+        text-decoration: none;
+        color: $white-color;
+      }
       &__group {
         font-size: 15px;
         margin: 0 20px 5px;
