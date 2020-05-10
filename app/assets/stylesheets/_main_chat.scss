@@ -39,6 +39,7 @@
   .main-chat__message {
     background-color: #fafafa;
     height: calc(100vh - 100px - 90px);
+    overflow:scroll;
     &--left {
       display: flex;
       color: $black-color;
