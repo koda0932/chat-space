@@ -1,9 +1,11 @@
 .main-chat
   .main-chat__header
     .main-chat__header--left
-      test
+      = @group.name
       .main-chat__header--left--item
-        Member:masa
+        Member:
+        - @group.users.each do |user|
+          = user.name
     .main-chat__header--right
       %a{href: "#"}
         Edit
