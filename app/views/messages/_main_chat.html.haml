@@ -7,7 +7,7 @@
         - @group.users.each do |user|
           = user.name
     .main-chat__header--right
-      %a{href: "#"}
+      %a{href: edit_group_path(@group)}
         Edit
 
   .main-chat__message
