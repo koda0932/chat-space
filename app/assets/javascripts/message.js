@@ -1,9 +1,32 @@
 $(function() {
 
+  var reloadMessages = function() {
+    var last_message_id = $('.main-chat__message--left:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.main-chat__message').append(insertHTML);
+      $('.main-chat__message').animate({ scrollTop: $('.main-chat__message')[0].scrollHeight});
+      }
+    })
+    .fail(function() {
+      alert('error');
+    });
+  };
+
   function buildHTML(message) {
     if ( message.image ) {
-    var html = `<div class="main-chat__message">
-                  <div class="main-chat__message--left">
+    var html = `
+                  <div class="main-chat__message--left" data-message-id=${message.id}>
                     ${message.user_name}
                     <div class="main-chat__message--left--item">
                       ${message.created_at}
@@ -15,11 +38,11 @@ $(function() {
                     </p>
                     <img src=${message.image}>
                   </div>
-                </div>`
+                `
     return html;
   } else {
-    var html = `<div class="main-chat__message">
-                  <div class="main-chat__message--left">
+    var html = `
+                  <div class="main-chat__message--left" data-message-id=${message.id}>
                     ${message.user_name}
                     <div class="main-chat__message--left--item">
                       ${message.created_at}
@@ -30,7 +53,7 @@ $(function() {
                     ${message.content}
                     </p>
                   </div>
-                </div>`
+                `
     return html;
   };
   }
@@ -59,4 +82,8 @@ $(function() {
       alert("メッセージ送信に失敗しました");
     });
   });
+
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
